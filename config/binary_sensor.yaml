@@ -1,0 +1,10 @@
+- platform: mqtt
+  state_topic: dummy/floorplan/sensor
+  name: Floorplan
+
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/motion"
+  name: Motion
+  payload_on: '{"value":true}'
+  payload_off: '{"value":false}'
+  device_class: motion

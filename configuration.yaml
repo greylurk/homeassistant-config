@@ -5,6 +5,7 @@ homeassistant:
   elevation: !secret elevation
   unit_system: imperial
   time_zone: America/Chicago
+  customize: !include config/customization.yaml
 
 # Enables the frontend
 frontend:
@@ -15,9 +16,6 @@ config:
 http:
   api_password: !secret api_password
   # base_url: greylurk.pagekite.me
-
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
 
 discovery:
   ignore: 
@@ -31,24 +29,6 @@ logbook:
 
 # Track the sun
 sun:
-
-# Weather Prediction
-sensor:
-  - platform: wunderground
-    api_key: !secret wunderground_api_key
-    monitored_conditions: 
-      - alerts
-      - dewpoint_f
-      - feelslike_f
-      - heat_index_f
-      - precip_today_in
-      - pressure_in
-      - pressure_trend
-      - temp_f
-      - weather
-      - wind_dir
-      - wind_mph
-      - wind_gust_mph
 
 # Text to speech
 tts:
@@ -76,7 +56,6 @@ camera:
     username: !secret camera_username
     password: !secret camera_password
 
-
 media_player:
   - platform: firetv
     name: Living Room FireTV
@@ -85,10 +64,11 @@ media_player:
   - platform: cast
     host: 192.168.0.147
 
-ifttt:
-  key: !secret ifttt_key
+updater:
+  include_used_components: true
 
 mqtt:
+  client_id: hass
   broker: !secret mqtt_broker
   port: !secret mqtt_port
   username: !secret mqtt_username
@@ -105,6 +85,16 @@ notify:
     name: Living Room
     host: 192.168.0.193
   
-group: !include groups.yaml
-automation: !include automations.yaml
+http:
+  api_password: !secret api_password
 
+group: !include config/groups.yaml
+
+panel_custom: !include config/panel_custom.yaml
+
+binary_sensor: !include config/binary_sensor.yaml
+
+sensor: !include config/sensors.yaml
+
+ifttt:
+  key: !secret ifttt_api

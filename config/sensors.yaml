@@ -1,0 +1,33 @@
+- platform: wunderground
+  api_key: !secret wunderground_api_key
+  monitored_conditions: 
+    - alerts
+    - dewpoint_f
+    - feelslike_f
+    - heat_index_f
+    - precip_today_in
+    - pressure_in
+    - pressure_trend
+    - temp_f
+    - weather
+    - wind_dir
+    - wind_mph
+    - wind_gust_mph
+
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/battery"
+  name: "wallpanel battery"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/brightness"
+  name: "wallpanel brightness"
+  unit_of_measurement: "lx"
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: "wallpanel/mywallpanel/sensor/pressure"
+  name: "wallpanel pressure"
+  unit_of_measurement: "mb"
+  value_template: '{{ value_json.value }}'

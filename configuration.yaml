@@ -15,7 +15,6 @@ config:
 
 http:
   api_password: !secret api_password
-  # base_url: greylurk.pagekite.me
 
 discovery:
   ignore: 
@@ -33,14 +32,12 @@ sun:
 # Text to speech
 tts:
   platform: google
+ 
+wemo: 
+  static:
+    - 192.168.0.105
 
-switch:
-  - platform: tplink
-    host: 192.168.0.104
-    name: Decker's Humidifier
-  - platform: tplink
-    host: 192.168.0.175
-    name: Living Room Lights
+switch: !include config/switches.yaml
 
 camera:
   - platform: onvif
@@ -85,9 +82,6 @@ notify:
     name: Living Room
     host: 192.168.0.193
   
-http:
-  api_password: !secret api_password
-
 group: !include config/groups.yaml
 
 panel_custom: !include config/panel_custom.yaml

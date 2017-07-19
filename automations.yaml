@@ -1,0 +1,12 @@
+- id: lights_on
+  alias: Lights On
+  trigger:
+  - entity_id: sun.sun
+    from: above_horizon
+    platform: state
+    to: below_horizon
+  action:
+  - data:
+      entity_id: switch.living_room_lights
+    entity_id: switch.living_room_lights
+    service: light.turn_on

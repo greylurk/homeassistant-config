@@ -1,0 +1,110 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  unit_system: imperial
+  time_zone: America/Chicago
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  api_password: !secret api_password
+  # base_url: greylurk.pagekite.me
+
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+
+discovery:
+  ignore: 
+    - plex_mediaserver
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather Prediction
+sensor:
+  - platform: wunderground
+    api_key: !secret wunderground_api_key
+    monitored_conditions: 
+      - alerts
+      - dewpoint_f
+      - feelslike_f
+      - heat_index_f
+      - precip_today_in
+      - pressure_in
+      - pressure_trend
+      - temp_f
+      - weather
+      - wind_dir
+      - wind_mph
+      - wind_gust_mph
+
+# Text to speech
+tts:
+  platform: google
+
+switch:
+  - platform: tplink
+    host: 192.168.0.104
+    name: Decker's Humidifier
+  - platform: tplink
+    host: 192.168.0.175
+    name: Living Room Lights
+
+camera:
+  - platform: onvif
+    name: Basement
+    port: 8080
+    host: 192.168.0.198
+    username: !secret camera_username
+    password: !secret camera_password
+  - platform: onvif
+    name: Living Room
+    host: 192.168.0.102
+    port: 8080
+    username: !secret camera_username
+    password: !secret camera_password
+
+
+media_player:
+  - platform: firetv
+    name: Living Room FireTV
+  - platform: cast
+    host: 192.168.0.155
+  - platform: cast
+    host: 192.168.0.147
+
+ifttt:
+  key: !secret ifttt_key
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+device_tracker: 
+  - platform: owntracks
+
+notify:
+  - platform: facebook
+    page_access_token: !secret fb_access_token
+    name: Facebook
+  - platform: nfandroidtv
+    name: Living Room
+    host: 192.168.0.193
+  
+group: !include groups.yaml
+automation: !include automations.yaml
+

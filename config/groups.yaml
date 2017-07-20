@@ -25,6 +25,7 @@ living_room:
   entities: 
     - media_player.living_room
     - switch.living_room_lights
+
 bedroom:
   name: Master Bedroom
   entities:

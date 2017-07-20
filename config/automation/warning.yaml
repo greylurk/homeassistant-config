@@ -17,4 +17,4 @@ action:
  - service: notify.pushbullet
    data: 
      title: Commute
-     message: 'Traffic is heavy, over {{ states.sensor.home_to_apple_valley.state }} minutes.'
+     message: 'Traffic is heavy, over {{ states.sensor.home_to_transit.state }} minutes.'

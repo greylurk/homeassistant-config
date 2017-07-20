@@ -1,9 +1,6 @@
 adam_phone_aptracker:
   hide_if_away: false
-  icon:
-  mac: "dc:ee:06:fe:62:a0"
+  mac: !secret phone_mac_addr
   name: Adam
-  gravatar: adam.ness@gmail.com
-  picture:
+  gravatar: !secret email
   track: true
-  vendor:

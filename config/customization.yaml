@@ -1,3 +1,12 @@
 binary_sensor.floorplan:
   custom_ui_state_card: floorplan
   config: !include floorplan.yaml
+
+media_player.bedroom:
+  hidden: true
+
+media_player.living_room:
+  hidden: true
+
+switch.living_room_lights: 
+  icon: "mdi:lightbulb"

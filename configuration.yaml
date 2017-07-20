@@ -19,6 +19,7 @@ http:
 discovery:
   ignore: 
     - plex_mediaserver
+    - google_cast
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -37,29 +38,20 @@ wemo:
   static:
     - 192.168.0.105
 
+binary_sensor: !include config/binary_sensor.yaml
+camera: !include config/cameras.yaml
+media_player: !include config/media_players.yaml
 switch: !include config/switches.yaml
+panel_custom: !include config/panel_custom.yaml
+sensor: !include config/sensors.yaml
+notify: !include config/notifications.yaml
 
-camera:
-  - platform: onvif
-    name: Basement
-    port: 8080
-    host: 192.168.0.198
-    username: !secret camera_username
-    password: !secret camera_password
-  - platform: onvif
-    name: Living Room
-    host: 192.168.0.102
-    port: 8080
-    username: !secret camera_username
-    password: !secret camera_password
+automation: !include_dir_list config/automation/
 
-media_player:
-  - platform: firetv
-    name: Living Room FireTV
-  - platform: cast
-    host: 192.168.0.155
-  - platform: cast
-    host: 192.168.0.147
+weather:
+  - platform: yweather
+    woeid: 2461928
+    name: Northfield, MN
 
 updater:
   include_used_components: true
@@ -74,21 +66,8 @@ mqtt:
 device_tracker: 
   - platform: owntracks
 
-notify:
-  - platform: facebook
-    page_access_token: !secret fb_access_token
-    name: Facebook
-  - platform: nfandroidtv
-    name: Living Room
-    host: 192.168.0.193
   
 group: !include config/groups.yaml
-
-panel_custom: !include config/panel_custom.yaml
-
-binary_sensor: !include config/binary_sensor.yaml
-
-sensor: !include config/sensors.yaml
 
 ifttt:
   key: !secret ifttt_api

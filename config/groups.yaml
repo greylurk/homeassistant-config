@@ -26,6 +26,11 @@ living_room:
     - media_player.living_room
     - switch.living_room_lights
 
+zones:
+  name: Zones
+  entities:
+    - binary_sensor.floorplan
+
 bedroom:
   name: Master Bedroom
   entities:

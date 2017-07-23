@@ -62,11 +62,11 @@ wemo:
     - 192.168.0.105
 
 binary_sensor: !include config/binary_sensor.yaml
+sensor: !include_dir_list config/sensors/
 camera: !include config/cameras.yaml
 media_player: !include config/media_players.yaml
 switch: !include config/switches.yaml
 panel_custom: !include config/panel_custom.yaml
-sensor: !include config/sensors.yaml
 notify: !include config/notifications.yaml
 
 automation: !include_dir_list config/automation/
@@ -74,7 +74,6 @@ group: !include config/groups.yaml
 
 device_tracker: 
   - platform: owntracks
-
 
 ifttt:
   key: !secret ifttt_api

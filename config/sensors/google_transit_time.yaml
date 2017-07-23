@@ -1,0 +1,5 @@
+platform: google_travel_time
+name: Home to Transit
+origin: zone.home
+destination: !secret bus_address
+api_key: !secret google_maps_token

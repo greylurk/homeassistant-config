@@ -1,5 +1,5 @@
 - platform: ffmpeg
-  name: Basement
+  name: Dining Room
   input: !secret camera_basement_url
 - platform: ffmpeg
   name: Living Room

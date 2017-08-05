@@ -14,7 +14,8 @@ mqtt:
   username: !secret mqtt_username
   password: !secret mqtt_password
 
-# Enables the frontend
+hassio:
+
 frontend:
 
 http:

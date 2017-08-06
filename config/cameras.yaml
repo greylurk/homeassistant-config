@@ -1,9 +1,13 @@
-- platform: ffmpeg
+- platform: generic
   name: Dining Room
-  input: !secret camera_basement_url
-- platform: ffmpeg
+  still_image_url: http://192.168.0.102/tmpfs/auto.jpg?{{as_timestamp(now())}}
+  username: user
+  password: !secret camera_password
+- platform: generic
+  still_image_url: http://192.168.0.102/tmpfs/auto.jpg?{{as_timestamp(now())}}
+  username: user
+  password: !secret camera_password
   name: Living Room
-  input: !secret camera_living_room_url
 - platform: generic
   still_image_url: https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=MPX&brand=wui&num=10&delay=1005&type=N0R&frame=0&scale=1.000&noclutter=0&showstorms=5&mapx=400&mapy=240&centerx=400&centery=240&transx=0&transy=0&showlabels=1&severe=0&rainsnow=1&lightning=0&smooth=1&rand=25008016&lat=0&lon=0&label=you
   name: 'MSP Doppler'

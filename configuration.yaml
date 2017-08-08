@@ -18,6 +18,8 @@ hassio:
 
 frontend:
 
+config:
+
 http:
   api_password: !secret api_password
 #  ssl_certificate: !secret ssl_certificate

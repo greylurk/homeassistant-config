@@ -1,6 +1,6 @@
 - platform: generic
   name: Dining Room
-  still_image_url: http://192.168.0.102/tmpfs/auto.jpg?{{as_timestamp(now())}}
+  still_image_url: http://192.168.0.191/tmpfs/auto.jpg?{{as_timestamp(now())}}
   username: user
   password: !secret camera_password
 - platform: generic

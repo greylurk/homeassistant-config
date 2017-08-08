@@ -1,3 +1,9 @@
+- platform: firetv
+  device: beroom
+  name: Bedroom Fire
+- platform: firetv
+  device: livingroom
+  name: Living Room Fire
 - platform: cast
   host: 192.168.0.155
 - platform: cast

@@ -1,6 +1,7 @@
 weather_overview:
   name: Weather Overview
   entities:
+    - camera.msp_doppler
     - sensor.pws_weather_1d
     - sensor.pws_temp_high_record_f
     - sensor.pws_temp_high_1d_f
@@ -23,11 +24,17 @@ people:
 living_room:
   name: Living Room
   entities: 
-    - media_player.living_room
+    - camera.living_room
     - switch.living_room_lights
+    - light.living_room
+    - light.left
+    - light.right
+    - media_player.living_room
+    - media_player.living_room_fire
 
 bedroom:
   name: Master Bedroom
   entities:
+    - switch.bedside_light
     - media_player.bedroom
-    - switch.bedroom_humidifier
+    - media_player.bedroom_fire

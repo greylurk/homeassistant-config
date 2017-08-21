@@ -22,33 +22,14 @@ config:
 
 http:
   api_password: !secret api_password
-#  ssl_certificate: !secret ssl_certificate
-#  ssl_key: !secret ssl_key
+  ssl_certificate: /ssl/fullchain1.pem
+  ssl_key: /ssl/privkey1.pem 
 
 alexa:
-  intents:
-    WhereAreWeIntent:
-      speech:
-        type: plaintext
-        text: >
-          {%- if is_state('device_tracker.adam_phone_aptracker', 'home') %}
-            You are both home, you silly
-          {%- else -%}
-            Adam is at {{ states("device_tracker.adam_phone_aptracker") }}
-          {% endif %}
-    LocateIntent:
-      speech:
-        type: plaintext
-        text: >
-          {%- for state in states.device_tracker -%}
-            {%- if state.name.lower() == User.lower() -%}
-              {{ state.name }} is at {{ state.state }}
-            {%- elif loop.last -%}
-              I am sorry, I do not know where {{ User }} is.
-            {%- endif -%}
-          {%- else -%}
-             Sorry, I don't have any trackers registered.
-          {%- endfor -%}
+
+intent_script: !include config/intent_script.yaml
+
+shopping_list:
 
 # View all events in a logbook
 logbook:
@@ -84,3 +65,5 @@ ifttt:
 tradfri:
   host: 192.168.0.106
   api_key: !secret tradfri_token
+
+zone: !include config/zones.yaml
